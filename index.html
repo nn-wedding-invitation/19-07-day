@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Николай и Надежда — приглашение на свадебный вечер</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #edf3ee;
+      --bg-deep: #d7e1da;
+      --paper: rgba(255,255,255,0.86);
+      --paper-strong: rgba(255,255,255,0.92);
+      --line: rgba(178, 187, 191, 0.55);
+      --line-soft: rgba(197, 204, 208, 0.35);
+      --text: #25322b;
+      --muted: #617169;
+      --accent: #8c9d95;
+      --accent-soft: #f4f7f4;
+      --shadow: 0 22px 56px rgba(61, 77, 66, 0.10);
+      --max: 720px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.36), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,.24), transparent 20%),
+        linear-gradient(180deg, #dfe8e1 0%, #d6e0d9 28%, #ced9d2 100%);
+      color: var(--text);
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), transparent 16%, transparent 84%, rgba(255,255,255,0.06)),
+        radial-gradient(circle at 8% 12%, rgba(255,255,255,0.16), transparent 18%),
+        radial-gradient(circle at 88% 78%, rgba(255,255,255,0.12), transparent 14%);
+      z-index: 0;
+    }
+
+    .page { position: relative; z-index: 1; }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px 40px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.18), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.14), transparent 28%),
+        linear-gradient(180deg, #b1c0b6 0%, #a8b9af 34%, #9eb1a7 100%);
+      border-radius: 0 0 36px 36px;
+      margin-bottom: 28px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 150px;
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.08));
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      width: min(100%, 760px);
+      text-align: center;
+      position: relative;
+      padding: 60px 24px 94px;
+    }
+
+    .date-stack {
+      position: absolute;
+      left: 0;
+      top: 30px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4.8rem, 12vw, 8rem);
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,1);
+      font-weight: 700;
+      text-align: left;
+      user-select: none;
+    }
+
+    .names {
+      position: relative;
+      z-index: 2;
+      margin-top: 140px;
+      color: rgba(255,255,255,0.97);
+      text-shadow: 0 4px 16px rgba(56,72,63,0.06);
+      font-family: 'Great Vibes', cursive;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .script {
+      font-family: 'Great Vibes', cursive;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      line-height: 1;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(4.5rem, 10vw, 7.2rem);
+      line-height: .92;
+      font-weight: 400;
+    }
+
+    .hero-and {
+      margin: 20px 0 18px;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      color: rgba(255,255,255,0.95);
+    }
+
+    .brush {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 22px;
+      width: min(92vw, 740px);
+      height: 120px;
+      opacity: 0.16;
+      pointer-events: none;
+      background: radial-gradient(circle at 15% 70%, rgba(255,255,255,0.62), transparent 24%),
+                  radial-gradient(circle at 72% 35%, rgba(255,255,255,0.48), transparent 22%),
+                  linear-gradient(165deg, transparent 18%, rgba(255,255,255,0.94) 22%, rgba(255,255,255,0.82) 38%, transparent 42%);
+      filter: blur(1px);
+      clip-path: polygon(0 72%, 10% 54%, 22% 58%, 34% 41%, 46% 45%, 55% 34%, 65% 42%, 77% 29%, 100% 20%, 100% 100%, 0 100%);
+    }
+
+    .floral-corner {
+      position: absolute;
+      right: clamp(18px, 4vw, 40px);
+      top: clamp(18px, 4vw, 40px);
+      width: clamp(180px, 28vw, 270px);
+      opacity: 0.94;
+      pointer-events: none;
+    }
+
+    .container {
+      width: min(calc(100% - 28px), var(--max));
+      margin: 0 auto;
+      padding-bottom: 58px;
+    }
+
+    .block {
+      position: relative;
+      margin-bottom: 22px;
+      padding: 38px 24px;
+      background: var(--paper);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.7);
+    }
+
+    .block::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid var(--line-soft);
+      border-radius: 20px;
+      pointer-events: none;
+    }
+
+    .message {
+      text-align: center;
+      padding: 52px 34px;
+      background: linear-gradient(180deg, rgba(248,250,247,.88), rgba(242,246,241,.80));
+    }
+
+    .message p {
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: clamp(1.16rem, 3.5vw, 1.42rem);
+      line-height: 1.95;
+      color: #334036;
+      font-weight: 300;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .section-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: clamp(2.5rem, 8vw, 3.9rem);
+      line-height: 1;
+      font-weight: 400;
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      color: #202b24;
+    }
+
+    .section-script {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2rem, 7vw, 3rem);
+      color: rgba(140, 151, 145, 0.34);
+      line-height: .78;
+      margin-top: -12px;
+    }
+
+    .section-intro {
+      max-width: 560px;
+      margin: 0 auto 22px;
+      text-align: center;
+      line-height: 1.8;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    .timing-card {
+      padding-top: 46px;
+      padding-bottom: 46px;
+      background: linear-gradient(180deg, rgba(248,250,247,.82), rgba(243,247,241,.78));
+    }
+
+    .timing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .timing-box {
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(197,204,208,.30);
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: 0 10px 28px rgba(86, 97, 88, 0.05);
+    }
+
+    .timing-box-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      line-height: 1.1;
+      color: #28332c;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .timing-item {
+      margin-bottom: 24px;
+    }
+
+    .timing-item:last-child { margin-bottom: 0; }
+
+    .timing-time {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 9vw, 3rem);
+      letter-spacing: .06em;
+      line-height: 1;
+      margin-bottom: 8px;
+      font-weight: 400;
+      color: #222c25;
+      text-align: center;
+    }
+
+    .timing-place {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  font-weight: 300;
+  text-align: center;
+}
+
+    .details-wrap {
+      display: grid;
+      gap: 14px;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    details.detail-item {
+      background: var(--paper-strong);
+      border: 1px solid rgba(197,204,208,.30);
+      border-radius: 22px;
+      padding: 0 20px;
+      box-shadow: 0 10px 28px rgba(86, 97, 88, 0.05);
+      text-align: left;
+    }
+
+    details summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 21px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      font-size: 1.1rem;
+      line-height: 1.55;
+      color: #303a32;
+      font-weight: 300;
+    }
+
+    details summary::-webkit-details-marker { display: none; }
+
+    .plus {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(187,196,200,.9);
+      color: white;
+      font-size: 1.55rem;
+      line-height: 1;
+      flex: 0 0 40px;
+      transition: transform .25s ease;
+      font-weight: 300;
+    }
+
+    details[open] .plus { transform: rotate(45deg); }
+
+    .detail-content {
+      padding: 0 0 20px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    .organizer-card {
+      text-align: center;
+      background: linear-gradient(180deg, rgba(248,250,247,.82), rgba(243,247,241,.76));
+    }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .location-card {
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(197,204,208,.30);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(86, 97, 88, 0.05);
+      text-align: center;
+    }
+
+    .location-time {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      line-height: 1;
+      color: #28332c;
+      margin-bottom: 10px;
+    }
+
+    .location-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      font-weight: 400;
+      color: #28332c;
+    }
+
+    .location-arrival {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .location-address {
+      display: inline-block;
+      color: #2f3930;
+      font-size: 1rem;
+      line-height: 1.7;
+      text-decoration: none;
+      font-weight: 300;
+      margin-bottom: 18px;
+    }
+
+    .map-shell {
+      margin-top: 0;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(197,204,208,.32);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.88);
+      background: rgba(247,250,246,.7);
+    }
+
+    .map-frame {
+      display: block;
+      width: 100%;
+      height: 240px;
+      border: 0;
+      filter: grayscale(.06) saturate(.92) contrast(1.01);
+    }
+
+    .map-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .map-link,
+    .ghost-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: .98rem;
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+
+    .map-link {
+      background: linear-gradient(180deg, #7e9087, #67796f);
+      color: #fff;
+      box-shadow: 0 14px 30px rgba(79, 93, 80, .16);
+    }
+
+    .ghost-link {
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(197,204,208,.38);
+      color: #3c4a42;
+    }
+
+    .map-link:hover,
+    .ghost-link:hover,
+    .submit:hover { transform: translateY(-1px); }
+
+    .organizer-text {
+      max-width: 560px;
+      margin: 0 auto 18px;
+      line-height: 1.85;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    .organizer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 6px;
+      color: #28332c;
+    }
+
+    .organizer-contacts {
+      display: grid;
+      gap: 8px;
+      justify-items: center;
+      font-size: 1rem;
+    }
+
+    .organizer-contacts a {
+      color: #425147;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(66,81,71,.34);
+      padding-bottom: 2px;
+    }
+
+    .rsvp {
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,.26), transparent 18%),
+        radial-gradient(circle at 74% 28%, rgba(255,255,255,.16), transparent 17%),
+        linear-gradient(180deg, rgba(236,242,236,.9), rgba(229,236,229,.86));
+    }
+
+    .rsvp .section-eyebrow { letter-spacing: .08em; }
+
+    .rsvp-meta {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin: -6px auto 24px;
+      max-width: 430px;
+      font-weight: 300;
+    }
+
+    .yandex-form-wrap {
+      max-width: 560px;
+      margin: 0 auto;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(197,204,208,.30);
+      background: rgba(255,255,255,.85);
+      box-shadow: 0 10px 28px rgba(86, 97, 88, 0.05);
+    }
+
+    .yandex-form-frame {
+      display: block;
+      width: 100%;
+      min-height: 520px;
+      border: 0;
+      background: transparent;
+    }
+
+    .yandex-fallback {
+      max-width: 560px;
+      margin: 18px auto 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .yandex-fallback a {
+      color: #425147;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(66,81,71,.34);
+    }
+
+    form {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #2c352d;
+      font-weight: 300;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      min-height: 56px;
+      padding: 16px 18px;
+      border-radius: 0;
+      border: 1.4px solid rgba(41,49,40,.62);
+      background: rgba(255,255,255,.34);
+      font: inherit;
+      font-weight: 300;
+      color: var(--text);
+      appearance: none;
+    }
+
+    select {
+      background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+      background-position: calc(100% - 24px) calc(50% - 3px), calc(100% - 18px) calc(50% - 3px);
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 44px;
+    }
+
+    textarea {
+      min-height: 118px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(205,212,217,.14);
+      border-color: rgba(41,49,40,.86);
+    }
+
+    .submit {
+      margin-top: 10px;
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 18px;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #718279, #5a6a60);
+      color: #fff;
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 400;
+      cursor: pointer;
+      box-shadow: 0 16px 34px rgba(79, 93, 80, .16);
+      transition: transform .22s ease, box-shadow .22s ease, opacity .22s ease;
+    }
+
+    .submit:disabled {
+      opacity: .7;
+      cursor: default;
+    }
+
+    .status {
+      margin-top: 14px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 4px 18px 40px;
+      color: rgba(41,49,40,.68);
+      font-size: .95rem;
+      font-weight: 300;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    [data-reveal].shown {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0 0 28px 28px;
+        min-height: 108dvh;
+      }
+
+      .hero-inner {
+        padding: 36px 12px 110px;
+      }
+
+      .date-stack {
+        position: relative;
+        top: 0;
+        left: 0;
+        text-align: center;
+        margin-bottom: 14px;
+        font-size: clamp(3.5rem, 16vw, 5.4rem);
+      }
+
+      .names {
+        margin-top: 24px;
+      }
+
+      .hero h1 {
+        font-size: clamp(4rem, 18vw, 6rem);
+      }
+
+      .floral-corner {
+        width: 150px;
+      }
+
+      .block {
+        padding: 34px 18px;
+        margin-bottom: 18px;
+      }
+
+      .block::before {
+        inset: 12px;
+      }
+
+      .message {
+        padding: 42px 20px;
+      }
+
+      .message p {
+        line-height: 1.85;
+      }
+
+      .timing-grid,
+      .locations-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .map-frame {
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <svg class="floral-corner" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="rgba(255,255,255,0.92)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 24C66 12 106 20 140 44"/>
+          <path d="M138 44C166 62 186 86 204 130"/>
+          <path d="M205 130C212 160 212 191 208 226"/>
+          <path d="M145 40C148 26 140 14 122 4"/>
+          <path d="M161 51C175 42 191 42 208 51"/>
+          <path d="M178 72C189 64 203 64 218 74"/>
+          <path d="M195 100C208 96 220 102 229 118"/>
+          <path d="M197 132C212 130 226 138 236 154"/>
+          <path d="M193 158C206 162 215 174 220 190"/>
+          <path d="M188 182C198 192 202 206 200 222"/>
+          <path d="M117 44C96 34 74 32 48 36"/>
+          <path d="M95 52C81 48 64 50 44 62"/>
+          <path d="M192 116C182 106 171 98 158 92"/>
+          <path d="M187 141C176 136 166 134 154 134"/>
+          <path d="M183 170C171 170 160 174 150 182"/>
+          <ellipse cx="116" cy="20" rx="16" ry="5"/>
+          <ellipse cx="165" cy="46" rx="6" ry="3"/>
+          <ellipse cx="185" cy="68" rx="8" ry="3.5" transform="rotate(18 185 68)"/>
+          <ellipse cx="210" cy="109" rx="7" ry="3.5" transform="rotate(20 210 109)"/>
+          <ellipse cx="221" cy="145" rx="6" ry="6"/>
+          <ellipse cx="213" cy="182" rx="4" ry="4"/>
+          <ellipse cx="41" cy="34" rx="18" ry="4.5"/>
+          <ellipse cx="56" cy="61" rx="10" ry="3.5" transform="rotate(-18 56 61)"/>
+          <ellipse cx="170" cy="95" rx="18" ry="4.5" transform="rotate(30 170 95)"/>
+          <ellipse cx="164" cy="134" rx="12" ry="4" transform="rotate(10 164 134)"/>
+          <ellipse cx="160" cy="181" rx="18" ry="4.5" transform="rotate(-28 160 181)"/>
+          <circle cx="221" cy="166" r="3" fill="rgba(255,255,255,0.92)" stroke="none"/>
+          <circle cx="226" cy="179" r="2.6" fill="rgba(255,255,255,0.92)" stroke="none"/>
+          <circle cx="214" cy="196" r="2.4" fill="rgba(255,255,255,0.92)" stroke="none"/>
+        </g>
+      </svg>
+
+      <div class="hero-inner">
+        <div class="date-stack">19<br>07<br>26</div>
+        <div class="names">
+          <h1 class="script">Николай</h1>
+          <div class="hero-and script">и</div>
+          <h1 class="script" style="margin-top:0;">Надежда</h1>
+        </div>
+        <div class="brush"></div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="block message" data-reveal>
+        <p>
+          Дорогие родные и близкие, мы счастливы пригласить вас разделить с нами радость важного для нас дня — нашей свадьбы, которая состоится 19 июля 2026 года!
+        </p>
+      </section>
+
+      <section class="block timing-card" data-reveal>
+        <div class="section-head">
+          <div class="section-eyebrow">План дня</div>
+          <div class="section-script">план дня</div>
+        </div>
+
+        <div class="section-intro">
+          Мы будем рады провести этот вечер вместе с вами на загородной площадке.
+        </div>
+
+        <div class="timing-grid" style="grid-template-columns: 1fr; max-width: 360px;">
+          <div class="timing-box">
+            <div class="timing-box-title">Праздник на загородной площадке</div>
+
+            <div class="timing-item">
+              <div class="timing-time">15:30</div>
+              <div class="timing-place">Сбор гостей и фуршет</div>
+            </div>
+
+            <div class="timing-item">
+              <div class="timing-time">16:30</div>
+              <div class="timing-place">Выездная церемония</div>
+            </div>
+
+            <div class="timing-item">
+              <div class="timing-time">17:30</div>
+              <div class="timing-place">Начало банкета</div>
+            </div>
+
+            <div class="timing-item">
+              <div class="timing-time">22:00</div>
+              <div class="timing-place">Завершение вечера</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block organizer-card" data-reveal>
+        <div class="section-head">
+          <div class="section-eyebrow">Локация</div>
+          <div class="section-script">локация</div>
+        </div>
+
+        <div class="section-intro">
+          Ниже адрес и время, к которому мы будем ждать вас на площадке.
+        </div>
+
+        <div class="locations-grid" style="grid-template-columns: 1fr; max-width: 380px;">
+          <div class="location-card">
+            <div class="location-time">15:30</div>
+            <div class="location-name">Ресторан «Завидное»</div>
+            <div class="location-arrival">Ждём вас к сбору гостей и фуршету</div>
+
+            <a
+              class="location-address"
+              href="https://yandex.ru/maps/?pt=37.639860,55.560845&z=16&l=map"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Московская область, Ленинский район, пос. Измайлово, д. 23, стр. 1
+            </a>
+
+            <div class="map-shell">
+              <iframe
+                class="map-frame"
+                title="Яндекс Карта площадки банкета"
+                loading="lazy"
+                src="https://yandex.ru/map-widget/v1/?ll=37.639860%2C55.560845&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1Njc2ODE0MhJF0KDQvtGB0YHQuNGPLCDQnNC-0YHQutCy0LAsINCf0L7RgdGR0LvQvtC6INCY0LfQvNCw0LnQu9C-0LLQviwgMjPQuTEiCg3gvhhCFbEeXkI%2C&z=16">
+              </iframe>
+            </div>
+
+            <div class="map-actions">
+              <a
+                class="map-link"
+                href="https://yandex.ru/maps/?pt=37.639860,55.560845&z=16&l=map"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Открыть карту
+              </a>
+
+              <a
+                class="ghost-link"
+                href="https://yandex.ru/maps/?rtext=~55.560845,37.639860"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Построить маршрут
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block organizer-card" data-reveal>
+        <div class="section-head">
+          <div class="section-eyebrow">Детали</div>
+          <div class="section-script">детали</div>
+        </div>
+        <div class="section-intro">Здесь собрали несколько важных моментов, которые помогут вам заранее всё спланировать.</div>
+        <div class="details-wrap">
+          <details class="detail-item">
+            <summary>
+              <span>Что надо знать о сюрпризах и поздравлениях?</span>
+              <span class="plus">+</span>
+            </summary>
+            <div class="detail-content">
+              Нам будет очень приятно услышать ваши тёплые слова, поздравления и добрые пожелания. Если вы захотите подготовить сюрприз или творческое выступление, пожалуйста, заранее свяжитесь с нашим организатором — она с радостью включит его в программу вечера.            </div>
+          </details>
+
+          <details class="detail-item">
+            <summary>
+              <span>Что насчёт цветов?</span>
+              <span class="plus">+</span>
+            </summary>
+            <div class="detail-content">
+              Нам будет очень приятно любое ваше внимание. И хотя цветы всегда прекрасны, если вам захочется выбрать что-то другое, вместо букета можно подарить бутылку вина или шампанского — такой подарок останется с нами и ещё не раз напомнит о вашем тепле и этом счастливом дне.
+            </div>
+          </details>
+
+          <details class="detail-item">
+            <summary>
+              <span>Что взять с собой?</span>
+              <span class="plus">+</span>
+            </summary>
+            <div class="detail-content">
+              Хорошее настроение! Веселитесь, танцуйте, фотографируйте и проживайте счастливые моменты вместе с нами.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="block organizer-card" data-reveal>
+        <div class="section-head">
+          <div class="section-eyebrow">Организатор</div>
+          <div class="section-script">организатор</div>
+        </div>
+        <div class="organizer-text">
+          Если вы заблудились по дороге, хотите подготовить сюрприз или у вас возникли вопросы, не стесняйтесь обращаться к нашему организатору — она обязательно поможет.
+        </div>
+        <div class="organizer-name">Анна</div>
+        <div class="organizer-contacts">
+          <a href="tel:+79111696654">+7 911 169 6654</a>
+          <a href="https://t.me/anyta_titova" target="_blank" rel="noopener noreferrer">@anyta_titova</a>
+        </div>
+      </section>
+
+      <section class="block rsvp" data-reveal>
+        <div class="section-head">
+          <div class="section-eyebrow">Анкета гостя</div>
+          <div class="section-script">анкета гостя</div>
+        </div>
+        <div class="rsvp-meta">
+          Пожалуйста, подтвердите своё присутствие<br>
+          Будем ждать ваш ответ заранее
+        </div>
+      
+        <form id="rsvpForm">
+          <div class="field">
+            <label for="fullName">Как вас зовут?</label>
+            <input id="fullName" name="fullName" type="text" required>
+          </div>
+
+          <div class="field">
+            <label for="attendance">Придёте ли на свадьбу?</label>
+            <select id="attendance" name="attendance" required>
+              <option value="">Выберите вариант</option>
+              <option>Да, приду</option>
+              <option>Нет, не смогу</option>
+            </select>
+          </div>
+
+          <button class="submit" type="submit">Отправить ответ</button>
+          <div class="status" id="formStatus"></div>
+        </form>
+
+        <div class="yandex-fallback">
+          Если ответ не отправляется, напишите нам напрямую!
+        </div>
+      </section>
+  
+      <footer class="footer" data-reveal>
+     Ждём встречи с вами в этот особенный день!
+      </footer>
+    </div>
+  
+    <script>
+      // ===========================================================
+      //  НАСТРОЙКИ GOOGLE ФОРМЫ (версия для гостей банкета)
+      // ===========================================================
+      const GOOGLE_FORM_ID  = '1FAIpQLSeyfpBhleiJVK5FVt0C35p518YfxNLgSkVf5mCBFzTnmqjnvA';
+      const ENTRY_NAME      = 'entry.1719911748';
+      const ENTRY_ATTENDANCE = 'entry.408790033';
+      // ===========================================================
+
+      const FORM_SUBMIT_URL =
+        `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
+
+      // Анимация появления секций при скролле
+      const reveals = document.querySelectorAll('[data-reveal]');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('shown');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      reveals.forEach(el => observer.observe(el));
+
+      const form = document.getElementById('rsvpForm');
+      const formStatus = document.getElementById('formStatus');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const submitButton = form.querySelector('.submit');
+
+        const fullName   = form.elements.fullName.value.trim();
+        const attendance = form.elements.attendance.value;
+
+        if (!fullName || !attendance) {
+          formStatus.textContent = 'Пожалуйста, заполните все обязательные поля.';
+          return;
+        }
+
+        submitButton.disabled = true;
+        formStatus.textContent = 'Отправляем ответ...';
+
+        // Готовим данные в формате, который понимает Google Форма
+        const formData = new FormData();
+        formData.append(ENTRY_NAME,       fullName);
+        formData.append(ENTRY_ATTENDANCE, attendance);
+
+        try {
+          // mode: 'no-cors' — Google не разрешает читать ответ из браузера,
+          // но запрос всё равно доходит и данные сохраняются в таблицу.
+          await fetch(FORM_SUBMIT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: formData
+          });
+
+          form.reset();
+          formStatus.textContent = 'Спасибо! Ваш ответ отправлен.';
+        } catch (err) {
+          console.error(err);
+          formStatus.textContent =
+            'Не удалось отправить ответ. Пожалуйста, напишите нам напрямую.';
+        } finally {
+          submitButton.disabled = false;
+        }
+      });
+    </script>
+</body>
+</html>
