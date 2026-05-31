@@ -200,6 +200,21 @@
       font-weight: 300;
     }
 
+    /* Балансировка строк: убирает «висячие» одиночные слова и рваный край */
+    .message p,
+    .rsvp-meta,
+    .section-intro {
+      text-wrap: balance;
+    }
+
+    .organizer-text,
+    .location-arrival,
+    .timing-place,
+    .detail-content,
+    .timing-box-title {
+      text-wrap: pretty;
+    }
+
     .section-head {
       text-align: center;
       margin-bottom: 30px;
@@ -755,7 +770,7 @@
     <main class="container">
       <section class="block message" data-reveal>
         <p>
-          Дорогие родные и близкие, мы счастливы пригласить вас разделить с нами радость важного для нас дня — нашей свадьбы, которая состоится 19&nbsp;июля&nbsp;2026&nbsp;года!
+          Дорогие родные и&nbsp;близкие, мы&nbsp;счастливы пригласить вас разделить с&nbsp;нами радость важного для&nbsp;нас дня&nbsp;— нашей свадьбы, которая&nbsp;состоится 19&nbsp;июля&nbsp;2026&nbsp;года!
         </p>
       </section>
 
@@ -766,7 +781,7 @@
         </div>
 
         <div class="section-intro">
-          Мы будем рады провести этот вечер вместе с вами на загородной площадке.
+          Мы будем рады провести этот вечер вместе&nbsp;с&nbsp;вами на&nbsp;загородной площадке.
         </div>
 
         <div class="timing-grid" style="grid-template-columns: 1fr; max-width: 360px;">
@@ -774,7 +789,7 @@
 
             <div class="timing-item">
               <div class="timing-time">15:30</div>
-              <div class="timing-place">Сбор гостей и фуршет</div>
+              <div class="timing-place">Сбор гостей и&nbsp;фуршет</div>
             </div>
 
             <div class="timing-item">
@@ -802,14 +817,14 @@
         </div>
 
         <div class="section-intro">
-          Ниже адрес и время, к которому мы будем ждать вас на площадке.
+          Ниже адрес и&nbsp;время, к&nbsp;которому мы будем ждать вас на&nbsp;площадке.
         </div>
 
         <div class="locations-grid" style="grid-template-columns: 1fr; max-width: 380px;">
           <div class="location-card">
             <div class="location-time">15:30</div>
             <div class="location-name">Ресторан «Завидное»</div>
-            <div class="location-arrival">Ждём вас к сбору гостей и фуршету</div>
+            <div class="location-arrival">Ждём вас к&nbsp;сбору гостей и&nbsp;фуршету</div>
 
             <a
               class="location-address"
@@ -893,7 +908,7 @@
               <span class="plus">+</span>
             </summary>
             <div class="detail-content">
-              Нам будет очень приятно услышать ваши тёплые слова, поздравления и добрые пожелания. Если вы захотите подготовить сюрприз или творческое выступление, пожалуйста, заранее свяжитесь с нашим организатором — она с радостью включит его в программу вечера.            </div>
+              Нам будет очень приятно услышать ваши тёплые слова, поздравления и добрые пожелания. Если вы захотите подготовить сюрприз или творческое выступление, пожалуйста, заранее свяжитесь с нашим организатором — она с радостью включит его в программу вечера.</div>
           </details>
 
         </div>
@@ -951,8 +966,9 @@
       <footer class="footer" data-reveal>
      Ждём встречи с вами в этот особенный день!
       </footer>
-    </div>
-  
+    </main>
+  </div>
+
     <script>
       // ===========================================================
       //  НАСТРОЙКИ GOOGLE ФОРМЫ (версия для гостей банкета)
@@ -1023,4 +1039,3 @@
     </script>
 </body>
 </html>
-
